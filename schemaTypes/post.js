@@ -1,7 +1,7 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'post',
+  name: 'name',
   title: 'Post',
   type: 'document',
   fields: [
@@ -80,7 +80,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'name',
         maxLength: 96,
       },
     }),
@@ -89,7 +89,7 @@ export default defineType({
 
   preview: {
     select: {
-      title: 'title',
+      title: 'name',
     },
   },
 })
