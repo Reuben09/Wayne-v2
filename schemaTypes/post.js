@@ -6,8 +6,73 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+    }),
+    defineField({
+      name: 'address',
+      title: 'Add Address',
+      type: 'reference',
+      to: {type: 'address'},
+    }),
+    defineField({
+      name: 'price',
+      title: 'Price',
+      type: 'string',
+    }),
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+    }),
+    defineField({
+      name: 'notes',
+      title: 'Notes',
+      type: 'string',
+    }),
+    defineField({
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+    }),
+    defineField({
+      name: 'email',
+      title: 'Email',
+      type: 'string',
+    }),
+    defineField({
+      name: 'nextmow',
+      title: 'Next Mow',
+      type: 'string',
+    }),
+    defineField({
+      name: 'lastmow',
+      title: 'Last Mow',
+      type: 'string',
+    }),
+    defineField({
+      name: 'mowfrequency',
+      title: 'Mow Frequency',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Weekly', value: 'weekly'},
+          {title: 'Bi-Weekly', value: 'bi-weekly'},
+          {title: 'Monthly', value: 'monthly'},
+          {title: 'None', value: 'none'},
+        ],
+        layout: 'radio', // or 'dropdown'
+      },
+    }),
+    defineField({
+      name: 'customernumber',
+      title: 'Customer Number',
+      type: 'number',
+    }),
+    defineField({
+      name: 'productcode',
+      title: 'Product Code',
       type: 'string',
     }),
     defineField({
@@ -19,47 +84,12 @@ export default defineType({
         maxLength: 96,
       },
     }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
-    }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-    }),
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-    }),
+  
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
     },
   },
 })
